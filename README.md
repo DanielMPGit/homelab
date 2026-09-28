@@ -25,7 +25,7 @@
 
 ## ✨ What is this?
 
-A small self-hosted homelab built around a Raspberry Pi 5 and an Orange Pi 3B. The Raspberry Pi 5 runs Home Assistant OS, providing the main home automation platform, while the Orange Pi 3B runs Ubuntu Server and hosts several services through Docker. Mosquitto provides MQTT communication, with a custom MQTT script used to monitor and control the Orange Pi 3B fans. Pi-hole handles DNS filtering for the local network, while WireGuard provides secure remote VPN access. Docker services include Nextcloud, Jellyfin, MariaDB, Redis and Portainer. The setup also includes ESPHome devices and smart power devices integrated with Home Assistant. A UPS (Uninterruptible Power Supply) protects the Raspberry Pi 5 and router from power outages, helping keep the core network and home automation infrastructure online during short power interruptions.
+A small self-hosted homelab built with a Raspberry Pi 5 and an Orange Pi 3B, running Home Assistant, Docker services, MQTT, Pi-hole and WireGuard.
 
 ## 🧱 The stack
 ### Raspberry Pi 5
@@ -33,6 +33,8 @@ A small self-hosted homelab built around a Raspberry Pi 5 and an Orange Pi 3B. T
 - **Home Assistant OS**
 
 - Home automation, networking and device management.
+
+- 8 GB RAM · 512 GB SSD
 
 | Service | Role |
 | :--- | :--- |
@@ -42,8 +44,6 @@ A small self-hosted homelab built around a Raspberry Pi 5 and an Orange Pi 3B. T
 | **Pi-hole** | Network-wide DNS filtering |
 | **WireGuard** | VPN & remote access |
 
-- `8 GB RAM` · `512 GB SSD`
-
 ---
 
 ### Orange Pi 3B
@@ -51,6 +51,8 @@ A small self-hosted homelab built around a Raspberry Pi 5 and an Orange Pi 3B. T
 - **Ubuntu Server**
 
 - Secondary server for fan control and containerized services.
+
+- 8 GB RAM · 512 GB SSD
 
 | Service | Role |
 | :--- | :--- |
@@ -61,19 +63,7 @@ A small self-hosted homelab built around a Raspberry Pi 5 and an Orange Pi 3B. T
 | **MariaDB** | Database |
 | **Redis** | Cache & data store |
 
-- `8 GB RAM` · `512 GB SSD`
 
----
-
-### Infrastructure
-
-- **Raspberry Pi** → **Home Assistant** ↔ **Mosquitto** ↔ **Orange PI** ↔ **Fan Control**
-
-- **OrangePI** → **Docker** → Nextcloud · Jellyfin · MariaDB · Redis · Portainer
-
-- **Raspberry Pi** → **Home Assistant** → **WireGuard** → Remote access
-
-- **Raspberry Pi** → **Home Assistant** ↔ **Pi-hole** → Network-wide DNS filtering
 
 ## 🗺️ How it connects
 
