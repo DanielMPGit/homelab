@@ -17,7 +17,7 @@
 ![Ubuntu](https://img.shields.io/badge/Ubuntu_Server-E95420?style=flat-square&logo=ubuntu&logoColor=white)
 ![Apache](https://img.shields.io/badge/Apache-F28C28?style=flat-square&logo=apache&logoColor=white)
 <br>
-![Raspberry Pi](https://img.shields.io/badge/Raspberry_Pi_4-A22846?style=flat-square&logo=raspberry-pi&logoColor=white)
+![Raspberry Pi](https://img.shields.io/badge/Raspberry_Pi_5-A22846?style=flat-square&logo=raspberry-pi&logoColor=white)
 ![Orange Pi](https://img.shields.io/badge/Orange_Pi-FF7F00?style=flat-square)
 <br>
 
