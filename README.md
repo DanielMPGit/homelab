@@ -159,3 +159,29 @@ A small self-hosted homelab built with a Raspberry Pi 5 and an Orange Pi 3B, run
     </tr>
   </tbody>
 </table>
+
+## Explanations
+
+### 🌀 Orange Pi Fan Control Script
+
+A small Python script running on the Orange Pi 3B that connects it to Home Assistant through MQTT. It lets Home Assistant turn the two fans on and off, and it sends system data back so Home Assistant can decide when to do it.
+
+- **Fan control:** the fans are wired to two GPIO pins. The script turns them on at startup and then follows the on/off commands it receives over MQTT.
+- **Telemetry:** every 5 seconds it publishes the CPU and NVMe temperatures, CPU usage, RAM usage, used disk space and uptime.
+- **Availability:** the Orange Pi reports `Online` or `Offline`, so Home Assistant knows if it is reachable.
+- **Remote reboot:** the board can be restarted with an MQTT message.
+- **Logic in Home Assistant:** the script only executes orders. The temperature thresholds that decide when the fans turn on or off are set in Home Assistant.
+
+**Requirements:** Python 3, `paho-mqtt`, `psutil`, and root permissions to control the GPIO pins.
+
+## 🐳 Docker Services on the Orange Pi
+
+The Orange Pi runs three containers defined in a single Docker Compose file. They all restart automatically after a reboot or a power cut.
+
+- **Jellyfin** — Self-hosted media server for movies and TV shows. The library folders and the configuration are stored on the Orange Pi's SSD, so nothing is lost if the container is updated or recreated. Available on port `8096`.
+- **Portainer** — Web interface to manage all the Docker containers without using the terminal: start, stop, update and check logs. Available on port `9443` over HTTPS.
+- **Nextcloud** — Private cloud for files, calendar and contacts. It uses a MariaDB database and is served over HTTPS with a self-signed certificate, so the connection is encrypted inside the local network. Available on ports `8080` (HTTP) and `8443` (HTTPS).
+
+**Storage:** media and configuration files are saved in folders on the Orange Pi. Nextcloud data and Portainer settings are kept in Docker volumes, so they survive updates.
+
+**Network:** Nextcloud runs on its own Docker network so it can talk to the database container without exposing it to the rest of the network.

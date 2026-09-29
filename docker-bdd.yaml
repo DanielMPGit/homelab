@@ -1,0 +1,38 @@
+services:
+  mariadb:
+    image: mariadb:latest
+    container_name: mariadb
+    restart: unless-stopped
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: your password
+      MYSQL_DATABASE: nextcloud
+      MYSQL_USER: your user
+      MYSQL_PASSWORD: your password
+    volumes:
+      - mariadb_data:/var/lib/mysql
+      - /home/orangepi/docker/mariadb/conf.d:/etc/mysql/conf.d
+    networks:
+      - nextcloud-net
+
+  redis:
+    image: redis:alpine
+    container_name: redis
+    restart: unless-stopped
+    volumes:
+      - redis_data:/data
+    networks:
+      - nextcloud-net
+
+volumes:
+  mariadb_data:
+    external: true
+    name: prev-volume
+  redis_data:
+    external: true
+    name: prev-volume
+
+networks:
+  nextcloud-net:
+    external: true
