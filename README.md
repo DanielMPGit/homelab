@@ -6,7 +6,6 @@
 # Home Lab
 
 **A self-hosted smart home & homelab on Raspberry Pi and Orange Pi.**
-*Local-first · Zigbee · WireGuard · Config as code*
 
 ![Home Assistant](https://img.shields.io/badge/Home_Assistant-41BDF5?style=flat-square&logo=home-assistant&logoColor=white)
 ![Pi-hole](https://img.shields.io/badge/Pi--hole-96060C?style=flat-square&logo=pi-hole&logoColor=white)
