@@ -5,7 +5,7 @@
 
 # Home Lab
 
-**A self-hosted smart home & homelab on Raspberry Pi and Orange Pi.**
+**Self-hosted  homelab on Raspberry Pi and Orange Pi.**
 
 ![Home Assistant](https://img.shields.io/badge/Home_Assistant-41BDF5?style=flat-square&logo=home-assistant&logoColor=white)
 ![Pi-hole](https://img.shields.io/badge/Pi--hole-96060C?style=flat-square&logo=pi-hole&logoColor=white)
@@ -77,10 +77,10 @@ A small self-hosted homelab built with a Raspberry Pi 5 and an Orange Pi 3B, run
 | | Device | Location | Link | Role |
 |:-:|:--|:--|:--|:--|
 | 💡 | Double Smart Switch | Bedroom Lights | Tuya Wifi | On/Off |
-| 💡 | Smart Leds | Bedroom, table lamp | Tuya/Wifi | On/Off, RGBW |
+| 💡 | Smart Leds | Desktop Leds | Tuya/Wifi | On/Off, RGBW |
 | 🔌 | Smart Plug | Additional Power | Tuya/Wifi | On/Off |
 | 🔌 | Smart Power Strip | Desktop Power | Tuya/Wifi | On/Off |
-| 🖥️ | Desktop PC  | Bedroom wall | MQTT | On/Off, Commands |
+| 🖥️ | Desktop PC  | Desktop | MQTT | On/Off, Commands |
 
 ## ⚙️ Most Important Automations
 
