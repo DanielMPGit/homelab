@@ -161,31 +161,63 @@ A small self-hosted homelab built with a Raspberry Pi 5 and an Orange Pi 3B, run
 
 ## Explanations
 
-### 🌀 Orange Pi Fan Control Script
+# Orange Pi 3B
 
-A small Python script running on the Orange Pi 3B that connects it to Home Assistant through MQTT. It lets Home Assistant turn the two fans on and off, and it sends system data back so Home Assistant can decide when to do it.
+The Orange Pi 3B runs several services managed with Docker and integrates with Home Assistant through MQTT.
 
-- **Fan control:** the fans are wired to two GPIO pins. The script turns them on at startup and then follows the on/off commands it receives over MQTT.
-- **Telemetry:** every 5 seconds it publishes the CPU and NVMe temperatures, CPU usage, RAM usage, used disk space and uptime.
-- **Availability:** the Orange Pi reports `Online` or `Offline`, so Home Assistant knows if it is reachable.
-- **Remote reboot:** the board can be restarted with an MQTT message.
-- **Logic in Home Assistant:** the script only executes orders. The temperature thresholds that decide when the fans turn on or off are set in Home Assistant.
+## 🌀 Fan Control
 
-**Requirements:** Python 3, `paho-mqtt`, `psutil`, and root permissions to control the GPIO pins.
+A Python script controls two GPIO fans and publishes system telemetry via MQTT.
 
-## 🐳 Docker Services on the Orange Pi
+* Fans are enabled at startup and controlled through MQTT commands.
+* Publishes CPU/NVMe temperature, CPU/RAM usage, disk usage and uptime every 5 seconds.
+* Reports `Online` / `Offline` availability status.
+* Supports remote reboot via MQTT.
+* Fan temperature thresholds are configured in Home Assistant.
 
-The Orange Pi runs three containers defined in a single Docker Compose file. They all restart automatically after a reboot or a power cut.
+**Requirements:** Python 3, `paho-mqtt`, `psutil` and root privileges for GPIO access.
 
-- **Jellyfin** — Self-hosted media server for movies and TV shows. The library folders and the configuration are stored on the Orange Pi's SSD, so nothing is lost if the container is updated or recreated. Available on port `8096`.
-- **Portainer** — Web interface to manage all the Docker containers without using the terminal: start, stop, update and check logs. Available on port `9443` over HTTPS.
-- **Nextcloud** — Private cloud for files, calendar and contacts. It uses a MariaDB database and is served over HTTPS with a self-signed certificate, so the connection is encrypted inside the local network. Available on ports `8080` (HTTP) and `8443` (HTTPS).
+## 🌀 Fan PCB
 
-**Storage:** media and configuration files are saved in folders on the Orange Pi. Nextcloud data and Portainer settings are kept in Docker volumes, so they survive updates.
+The custom PCB uses two **2N2222 NPN transistors** to control two **5V fans**.
+- `GPIO 1` controls **Fan 1** through `T1`.
+- `GPIO 2` controls **Fan 2** through `T2`.
+- The 2N2222 transistors act as switches, allowing the Orange Pi to turn each fan on or off without powering them directly from the GPIO pins.
 
-**Network:** Nextcloud runs on its own Docker network so it can talk to the database container without exposing it to the rest of the network.
+<table width="100%">
+  <tr>
+    <td align="center" width="50%">
+      <img src="img/pcb_top.svg" alt="Left image" width="100%">
+      <br>
+      <sub>Top Layer</sub>
+    </td>
+    <td align="center" width="50%">
+      <img src="img/pcb_bottom.svg" alt="Right image" width="100%">
+      <br>
+      <sub>Bottom layer</sub>
+    </td>
+  </tr>
+
+## 🐳 Docker Services
+
+All services are defined in a single Docker Compose file and configured to restart automatically.
+
+| Service       | Description                                    | Port                       |
+| ------------- | ---------------------------------------------- | -------------------------- |
+| **Jellyfin**  | Self-hosted media server                       | `8096`                     |
+| **Portainer** | Docker management interface                    | `9443` HTTPS               |
+| **Nextcloud** | Private cloud for files, calendar and contacts | `8080` HTTP / `8443` HTTPS |
+
+### Storage & Network
+
+* Jellyfin libraries and configuration are stored on the Orange Pi SSD.
+* Nextcloud data and Portainer settings use persistent Docker volumes.
+* Nextcloud and MariaDB communicate through a dedicated Docker network.
+* Nextcloud HTTPS uses a self-signed certificate for encrypted local-network access.
+
 
 <br>
+
 <div align="center">
   <p style="font-size: 14px">
     Licensed under the <b>MIT License</b> · <a href="LICENSE">View license</a>
