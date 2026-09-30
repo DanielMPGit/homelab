@@ -197,6 +197,7 @@ The custom PCB uses two **2N2222 NPN transistors** to control two **5V fans**.
       <sub>Bottom layer</sub>
     </td>
   </tr>
+</table>
 
 ## 🐳 Docker Services
 
