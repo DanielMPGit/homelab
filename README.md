@@ -205,7 +205,7 @@ All services are defined in a single Docker Compose file and configured to resta
 
 | Service       | Description                                    | Port                       |
 | ------------- | ---------------------------------------------- | -------------------------- |
-| **Jellyfin**  | Self-hosted media server                       | `8096`                     |
+| **Jellyfin**  | Self-hosted media server                       | `8096` HTTP                |
 | **Portainer** | Docker management interface                    | `9443` HTTPS               |
 | **Nextcloud** | Private cloud for files, calendar and contacts | `8080` HTTP / `8443` HTTPS |
 
