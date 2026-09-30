@@ -189,12 +189,12 @@ The custom PCB uses two **2N2222 NPN transistors** to control two **5V fans**.
     <td align="center" width="50%">
       <img src="img/pcb_top.svg" alt="Left image" width="100%">
       <br>
-      <sub>Top Layer</sub>
+      Top Layer
     </td>
     <td align="center" width="50%">
       <img src="img/pcb_bottom.svg" alt="Right image" width="100%">
       <br>
-      <sub>Bottom layer</sub>
+      Bottom layer
     </td>
   </tr>
 </table>
