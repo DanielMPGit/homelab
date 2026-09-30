@@ -184,3 +184,10 @@ The Orange Pi runs three containers defined in a single Docker Compose file. The
 **Storage:** media and configuration files are saved in folders on the Orange Pi. Nextcloud data and Portainer settings are kept in Docker volumes, so they survive updates.
 
 **Network:** Nextcloud runs on its own Docker network so it can talk to the database container without exposing it to the rest of the network.
+
+<br>
+<div align="center">
+  <p style="font-size: 14px">
+    Licensed under the <b>MIT License</b> · <a href="LICENSE">View license</a>
+  </p>
+</div>
