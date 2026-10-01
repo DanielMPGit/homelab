@@ -216,6 +216,47 @@ All services are defined in a single Docker Compose file and configured to resta
 * Nextcloud and MariaDB communicate through a dedicated Docker network.
 * Nextcloud HTTPS uses a self-signed certificate for encrypted local-network access.
 
+## VPN (WireGuard)
+
+Remote access to the local network and DNS (Pi-hole) through WireGuard, running as a **Home Assistant add-on**. It's a **split tunnel**: only traffic to the VPN network and the LAN goes through the VPN, everything else uses the device's normal connection.
+
+| Network | Range |
+|---|---|
+| VPN | `10.0.0.0/24` (server: `10.0.0.1`) |
+| LAN | `192.168.1.0/24` |
+
+### Server configuration (Home Assistant add-on)
+
+```yaml
+server:
+  host: <PUBLIC_IP_OR_DOMAIN>
+  addresses:
+    - 10.0.0.1/24
+  dns:
+    - 192.168.1.X              # LAN IP DNS server (PiHole)
+peers:
+  - name: peer1
+    addresses:
+      - 10.0.0.2/32
+    allowed_ips: []
+    client_allowed_ips:
+      - 10.0.0.0/24            # VPN network
+      - 192.168.1.0/24         # LAN
+```
+### Client configuration
+
+```ini
+[Interface]
+PrivateKey = <CLIENT_PRIVATE_KEY>
+Address = 10.0.0.2/32
+DNS = 192.168.1.X  # LAN IP DNS server (PiHole)
+
+[Peer]
+PublicKey = <SERVER_PUBLIC_KEY>
+Endpoint = <PUBLIC_IP_OR_DOMAIN>:<PORT>
+AllowedIPs = 10.0.0.0/24, 192.168.1.0/24
+PersistentKeepalive = 25
+```
 
 <br>
 
