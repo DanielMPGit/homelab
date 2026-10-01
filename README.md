@@ -233,15 +233,15 @@ server:
   addresses:
     - 10.0.0.1/24
   dns:
-    - 192.168.1.X              # LAN IP DNS server (PiHole)
+    - 192.168.1.X   # LAN IP DNS server (PiHole)
 peers:
   - name: peer1
     addresses:
       - 10.0.0.2/32
     allowed_ips: []
     client_allowed_ips:
-      - 10.0.0.0/24            # VPN network
-      - 192.168.1.0/24         # LAN
+      - 10.0.0.0/24    # VPN network
+      - 192.168.1.0/24    # LAN
 ```
 ### Client configuration
 
@@ -249,7 +249,7 @@ peers:
 [Interface]
 PrivateKey = <CLIENT_PRIVATE_KEY>
 Address = 10.0.0.2/32
-DNS = 192.168.1.X  # LAN IP DNS server (PiHole)
+DNS = 192.168.1.X    # LAN IP DNS server (PiHole)
 
 [Peer]
 PublicKey = <SERVER_PUBLIC_KEY>
