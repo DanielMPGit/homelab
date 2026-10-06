@@ -166,7 +166,7 @@ A small self-hosted homelab built with a Raspberry Pi 5 and an Orange Pi 3B, run
 | [`PCB/`](PCB/) | PCB design files and Gerber files |
 | [`img/`](img/) | Images and media used in readme |
 | [`web/`](web/) | Web related files |
-| [`LICENCE`](LICENCE) | Project license |
+| [`LICENCE`](LICENSE) | Project license |
 | [`README.md`](README.md)` | Project documentation |
 | [`docker-bdd.yaml`](docker-bdd.yaml) | Docker Compose configuration for database services |
 | [`docker-media.yml`](docker-media.yml) | Docker Compose configuration for media services |
