@@ -159,7 +159,20 @@ A small self-hosted homelab built with a Raspberry Pi 5 and an Orange Pi 3B, run
   </tbody>
 </table>
 
-## Explanations
+## 📂 Repository
+
+| Path | Description |
+|---|---|
+| [`PCB/`](PCB/) | PCB design files and Gerber files |
+| [`img/`](img/) | Images and media used in readme |
+| [`web/`](web/) | Web related files |
+| [`LICENCE`](LICENCE) | Project license |
+| [`README.md`](README.md)` | Project documentation |
+| [`docker-bdd.yaml`](docker-bdd.yaml) | Docker Compose configuration for database services |
+| [`docker-media.yml`](docker-bdd.yaml) | Docker Compose configuration for media services |
+| [`mqtt_gpio.py`](mqtt_gpio.py) | Python script for GPIO and MQTT communication |
+
+## 🔎 Explanations
 
 # Orange Pi 3B
 
@@ -178,8 +191,6 @@ A Python script controls two GPIO fans and publishes system telemetry via MQTT.
 **Requirements:** Python 3, `paho-mqtt`, `psutil` and root privileges for GPIO access.
 
 ## 🌀 Fan PCB
-
-**Files :** [`PCB/`](PCB/) 
 
 The custom PCB uses two **2N2222 NPN transistors** to control two **5V fans**.
 - `GPIO 1` controls **Fan 1** through `T1`.
@@ -266,8 +277,6 @@ PersistentKeepalive = 25
 
 A simple start page that works as a hub for my self-hosted services, so I can open any of them from one place instead of remembering each address.
 
-**Files :** [`web/`](web/) 
-
 ### What it does
 
 - Shows a card with buttons linking to Jellyfin, Home Assistant, Nextcloud, Portainer and Pi-hole.
@@ -284,19 +293,6 @@ It is plain HTML, CSS and JavaScript, with nothing to install:
 - `background.js`: animated background
 - `bootstrap_min.css`: base styles
 - `tilt.js`: card tilt effect
-
-## Repository
-
-| Path | Description |
-|---|---|
-| `PCB/` | PCB design files and Gerber files |
-| `img/` | Images and media used by the project |
-| `web/` | Web interface and related files |
-| `LICENSE` | Project license |
-| `README.md` | Project documentation |
-| `docker-bdd.yaml` | Docker Compose configuration for database services |
-| `docker-media.yml` | Docker Compose configuration for media services |
-| `mqtt_gpio.py` | Python script for GPIO and MQTT communication |
 
 
 <br>
