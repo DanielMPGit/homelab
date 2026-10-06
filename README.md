@@ -169,7 +169,7 @@ A small self-hosted homelab built with a Raspberry Pi 5 and an Orange Pi 3B, run
 | [`LICENCE`](LICENCE) | Project license |
 | [`README.md`](README.md)` | Project documentation |
 | [`docker-bdd.yaml`](docker-bdd.yaml) | Docker Compose configuration for database services |
-| [`docker-media.yml`](docker-bdd.yaml) | Docker Compose configuration for media services |
+| [`docker-media.yml`](docker-media.yaml) | Docker Compose configuration for media services |
 | [`mqtt_gpio.py`](mqtt_gpio.py) | Python script for GPIO and MQTT communication |
 
 ## 🔎 Explanations
