@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Lab</title>
+    <link rel="icon" href="img/icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="bootstrap_min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="bg_glow"></div>
+    <div id="overlay"></div>
+    <canvas id="canvas"></canvas>
+    <div class="card-container">
+        <div class="card" id="card">
+            <h1>Home Lab</h1>
+            <a class="btn-custom" href="URL_JELLYFIN" target="_blank">
+                <img src="img/Jellyfin.png" alt="Jellyfin Logo" style="width: 30px; height: 30px; margin-right: 10px;">
+                Jellyfin
+            </a>
+            <a class="btn-custom" href="URL_HOMEASSISTANT" target="_blank">
+                <img src="img/Homeassistant.png" alt="Home Assistant Logo" style="width: 30px; height: 30px; margin-right: 10px;">
+                Home Assistant
+            </a>
+            <a class="btn-custom" href="URL_NEXTCLOUD" target="_blank">
+                <img src="img/Nextcloud.png" alt="Nextcloud Logo" style="width: 30px; height: 30px; margin-right: 10px;">
+                NextCloud
+            </a>
+            <div class="admin-title">Admin</div>
+            <a class="btn-custom" href="URL_PORTAINER" target="_blank">
+                <img src="img/Portainer.png" alt="Portainer Logo" style="width: 30px; height: 30px; margin-right: 10px;">
+                Portainer
+            </a>
+            <a class="btn-custom" href="URL_PIHOLE" target="_blank">
+                <img src="img/pi-hole.svg" alt="Pi-Hole Logo" style="width: 30px; height: 30px; margin-right: 10px;">
+                Pi-Hole
+            </a>
+        </div>
+    </div>
+    <script src="background.js"></script>
+    <script src="tilt.js"></script>
+</body>
+</html>

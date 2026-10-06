@@ -179,6 +179,8 @@ A Python script controls two GPIO fans and publishes system telemetry via MQTT.
 
 ## 🌀 Fan PCB
 
+**Files :** [`PCB/`](PCB/) 
+
 The custom PCB uses two **2N2222 NPN transistors** to control two **5V fans**.
 - `GPIO 1` controls **Fan 1** through `T1`.
 - `GPIO 2` controls **Fan 2** through `T2`.
@@ -260,6 +262,30 @@ PersistentKeepalive = 25
 
 <br>
 
+## 🌐 Start Page
+
+A simple start page that works as a hub for my self-hosted services, so I can open any of them from one place instead of remembering each address.
+
+**Files :** [`web/`](web/) 
+
+### What it does
+
+- Shows a card with buttons linking to Jellyfin, Home Assistant, Nextcloud, Portainer and Pi-hole.
+- Each button opens its service in a new tab.
+- Has an animated background and a card that tilts slightly with the mouse.
+
+### How it works
+
+It is plain HTML, CSS and JavaScript, with nothing to install:
+
+- `img/`: images used by the page
+- `index.html`: structure and links
+- `styles.css`: look of the card and buttons
+- `background.js`: animated background
+- `bootstrap_min.css`: base styles
+- `tilt.js`: card tilt effect
+
+<br>
 <div align="center">
   <p style="font-size: 14px">
     Licensed under the <b>MIT License</b> · <a href="LICENSE">View license</a>
