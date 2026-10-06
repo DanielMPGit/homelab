@@ -218,7 +218,7 @@ All services are defined in a single Docker Compose file and configured to resta
 * Nextcloud and MariaDB communicate through a dedicated Docker network.
 * Nextcloud HTTPS uses a self-signed certificate for encrypted local-network access.
 
-## VPN (WireGuard)
+## 🔐 VPN (WireGuard)
 
 Remote access to the local network and DNS (Pi-hole) through WireGuard, running as a **Home Assistant add-on**. It's a **split tunnel**: only traffic to the VPN network and the LAN goes through the VPN, everything else uses the device's normal connection.
 
@@ -284,6 +284,20 @@ It is plain HTML, CSS and JavaScript, with nothing to install:
 - `background.js`: animated background
 - `bootstrap_min.css`: base styles
 - `tilt.js`: card tilt effect
+
+## Repository
+
+| Path | Description |
+|---|---|
+| `PCB/` | PCB design files and Gerber files |
+| `img/` | Images and media used by the project |
+| `web/` | Web interface and related files |
+| `LICENSE` | Project license |
+| `README.md` | Project documentation |
+| `docker-bdd.yaml` | Docker Compose configuration for database services |
+| `docker-media.yml` | Docker Compose configuration for media services |
+| `mqtt_gpio.py` | Python script for GPIO and MQTT communication |
+
 
 <br>
 <div align="center">
