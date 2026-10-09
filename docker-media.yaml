@@ -1,0 +1,57 @@
+services:
+  jellyfin:
+    image: jellyfin/jellyfin:latest
+    container_name: jellyfin
+    volumes:
+      - /home/orangepi/jellyfin/config:/config
+      - /home/orangepi/jellyfin/tvshows:/media/tvshows
+      - /home/orangepi/jellyfin/movies:/media/movies
+    ports:
+      - 8096:8096
+    restart: unless-stopped
+
+  portainer:
+    image: portainer/portainer-ee:latest
+    container_name: portainer
+    ports:
+      - 9443:9443
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+    restart: always
+
+  nextcloud:
+    image: nextcloud:latest
+    container_name: nextcloud
+    restart: unless-stopped
+
+    ports:
+      - "8080:80"
+      - "8443:443"
+
+    environment:
+      MYSQL_HOST: mariadb
+      MYSQL_DATABASE: nextcloud
+      MYSQL_USER: your user
+      MYSQL_PASSWORD: your password
+
+    # These volumes are only required because we use self-signed certificates and need additional configuration.
+    volumes:
+      - nextcloud_data:/var/www/html
+      - /home/orangepi/nextcloud/ssl/orangepi.crt:/etc/ssl/certs/orangepi.crt
+      - /home/orangepi/nextcloud/ssl/orangepi.key:/etc/ssl/private/orangepi.key
+      - /home/orangepi/nextcloud/apache/default-ssl.conf:/etc/apache2/sites-available/default-ssl.conf
+      - /home/orangepi/nextcloud/init-ssl.sh:/init-ssl.sh
+    entrypoint: ["/bin/bash", "-c", "/init-ssl.sh && /entrypoint.sh apache2-foreground"] # Start SSL inside the container (not necesary on normal instalation)
+    networks:
+      - nextcloud-net
+
+volumes:
+  portainer_data:
+  nextcloud_data:
+    external: true
+    name: prev-volume
+
+networks:
+  nextcloud-net:
+    external: true
